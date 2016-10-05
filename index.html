@@ -1,2 +1,19 @@
-print("Hello world\n")
-print("Holy shit if this works.... \n")
+import urllib.request
+
+#grabs the image
+url = "http://i.imgur.com/VGD4EkS.jpg"
+picture = urllib.request.urlopen(url)
+#saves it
+#could be rewritten
+output = open(r"C:\Users\Jonathan\Documents\Programming\Python\toby bot\tobyheartanna.jpg", "wb")
+output.write(picture.read())
+output.close()
+
+#sets the wallpaper
+import ctypes
+SPI_SETDESKWALLPAPER = 0x14
+SPIF_UPDATEINIFILE   = 0x2 #forces instant update
+
+src = r"C:\Users\Jonathan\Documents\Programming\Python\toby bot\tobyheartanna.jpg"
+
+ctypes.windll.user32.SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0, src , SPIF_UPDATEINIFILE)
