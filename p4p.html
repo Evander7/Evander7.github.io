@@ -4,9 +4,13 @@
 <script type="text/javascript">
 function generator(){
 
-var nameList1 = ["Smart","Reusable"];
-var nameList2 = ["yachts","3D-printing","AR","machine learning"];
-var nameList3 = ["4.0"];
+var nameList1 = ["Smart","Reusable", "Intelligent", "Cyber physical", "Optimised", "Automated", "Real time"];
+var nameList2 = ["Industry 4.0", "3D printing", "Yacht", "CFD", "Quadcopter", "Carbon Fibre", 
+"More Carbon Fibre", "Floating Wind turbines", "Control systems of", "Additive Manufacturing", "800 hours of Simulink",
+"Death by MATLAB", "Simio", "Ruined Friendships", "A shit group partner", "Two semester", "Yachts", "GPA Reducer", "Soft Robotic"];
+var nameList3 = ["Ruined Friendhips", "More Carbon Fibre", "Simio", "For a Kuka Arm", "With Yachts", "Industry 4.0", 
+"Non Destructive Testing", "Destructive Testing", "And Chill", "A lifetime in Ansys", "A Vex Robot", " Rocket Lab", 
+"F&P smart Drive motor", "Supervised By Jaspreet", "Simulink ", "MATLAB", "Pain and Suffering ", "FSAE ", "Machine Learning"];
 
 rand1 = parseInt(Math.random() * nameList1.length);
 rand2 = parseInt(Math.random() * nameList2.length);
@@ -35,7 +39,6 @@ font-family:"Comic Sans MS", cursive, sans-serif;
 font-size: 11px; 
 margin:0px;
 }
-
 #content{
     position: center;
     border:0px;
@@ -49,12 +52,6 @@ margin:0px;
 #title{
     font-size: 40pt;
     line-height:45pt;
-    }
-    color: #177c8e; text-decoration: none;
-    font-size: 11px;
-}
-    color: ; text-decoration: none;
-        font-size: 11px;
     }
 	
 #result{
@@ -107,24 +104,22 @@ button:hover:before,button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
-
-
-
 </style>
+
 
 </head>
 <body onload = "generator()">
 
 <div id="content">
 
-<div id="title">Choose your part IV Project</div>
+<div id="title">Choose your mechanical part IV Project</div>
 
 	<div id="generator">
-		<p id="text">
-		<div id="placeholder">
+		
+		<div style='width:100%; margin:0 auto'; id="placeholder">
 			<div id="result">Industry 4.0</div>
 		</div>
-		</p>
+		
 		<button onclick="generator()">Make a new Part IV Project</button>
 	</div>
 
