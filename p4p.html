@@ -8,25 +8,25 @@ var adjList = ["Smart", "Reusable", "Intelligent", "Cyber physical ", "Optimised
 "Real time ", "robotic", "Wearable", "Renewable", "Energy efficient", "cloud-based", 
 "simulation of ", "Soft Robotic", "composite", " "];
 
-var verbList = ["Non Destructive Testing", "CFD", "FEA", "Additive Manufacturing ", 
+var verbList = ["Non Destructive Testing", "C.F.D", "F.E.A", "Additive Manufacturing ", 
 "Destructive Testing", "GPA Reducer ", "internet of things", 
-"cloud manufacturing", "augmented reality", "investigating", ""];
+"cloud manufacturing", "augmented reality", "investigating"];
 var verbListOf = ["acoustics of", "aerodynamics of", "Control systems of", "3D printing of", "testing of"];
 
 var linkingWords = ["for", "with", "using"];
 
 var nounList = ["Ruined Friendships ", "More Carbon Fibre ", "Simio", 
-"a Kuka Arm ", "Yachts ", "Industry 4.0", "Death by MATLAB", "Yacht", 
-"And Chill", "A lifetime in Ansys", "A Vex Robot", "Rocket Lab", 
+"a Kuka Arm ", "Yachts ", "Industry 4.0", "Death by MATLAB", "Yacht", "A lifetime in Ansys", 
+"A Vex Robot", "Rocket Lab", 
 "F&P smart Drive motor", "Virtual reality", "Simulink ", "MATLAB", 
-"Pain and Suffering ", "Formula SAE ", "Machine Learning ", 
+"Pain and Suffering ", "Formula S.A.E ", "Machine Learning ", 
 "Industry 4.0", "Simio", "a shit group partner ", "More Carbon Fibre", 
-"The Department of Engineering science ", "Carbon Fibre ", "Quadcopter", 
+"Department of Engineering science ", "Carbon Fibre ", "Quadcopter", 
 "3D printing", "3D printers", "automatic Window Washer", "wind turbines", 
 "Floating Wind turbines", "Additive Manufacturing ", "Gears ", "bearings", 
 "shafts", "interference fits", "tolerancing", "first angle isometric drawing", 
-"Root Locus ", "Drones", "composites", "artificial intelligence", "F SAE wheel", 
-"Eva Hakansson' Bike ", "Non-Functional Formula SAE Car", "The working Formula SAE Car", " "];
+"Root Locus ", "Drones", "composites", "artificial intelligence", "F S.A.E wheel", 
+"Eva Hakansson's Bike ", "Non-Functional Formula S.A.E Car", "The working Formula S.A.E Car", " "];
 
 var partnerList = ["Jaspreet", "Karl Stoll", "Hazim DyNamik", "Tom Allen", "Ray Zhong via correspondence from Hong Kong", 
 "Martin McArthy, Back from retirement", "Based Peter Richards ", "Tom Allen's Favorite Shear Flow Section", "Nic Smith", 
@@ -38,11 +38,12 @@ var partnerList = ["Jaspreet", "Karl Stoll", "Hazim DyNamik", "Tom Allen", "Ray 
 "Nicholas Smith", "an Onzo", "that guy from ports of auckland who did the Simio guest lecture", "Rob Kirkpatrick", "a shit project partner ", 
 "Harambe", "a peice of Carbon fibre ", "a life Sized cutout of your friend who chose to go with someone competent instead of you", "your Ex ", 
 "your soon to be Ex", "An Onzo", "A lime scooter", "a life Sized cutout of your friend who chose to go with your ex instead of you", "Stuart Norris", 
-"Brian Mace", "BaeVid Wynn", "that FSAE guy who never comes to class and you only see at tests", "that guy who's on first name basis with all the lecturers", 
+"Brian Mace", "BaeVid Wynn", "that F.S.A.E guy who never comes to class and you only see at tests", "that guy who's on first name basis with all the lecturers", 
 "That guy who says: \"can you please move the page up!!!\" ", "That girl who says: \"can you please move the page up!!!\" ", 
 "Two semesters of pain", "Eva Hakansson' Bike ", "The Dean ", "The Practical Work Commitee ", "the person who won't shut up about their F&P internship", 
-"Rocketlab's Rocket sanding intern "];
+"a yacht", "Rocketlab's Rocket sanding intern ", "Bernie Sanders"];
 
+var specialList = ["800 hours of Simio and Chill", "800 hours of Simulink and Chill"];
 
 adjRand = parseInt(Math.random() * adjList.length);
 verbRand = parseInt(Math.random() * verbList.length);
@@ -71,9 +72,19 @@ if(ofRand < 33) {
 var name = adjList[adjRand] + " " + verbList[verbRand] + " " + linkingWords[linkingWordRand] + " "+ nounList[nounRand] + " ";
 }
 
+//Creates a *special* name ;)
+var specialRand = parseInt(Math.random() * 100);
+if (specialRand <2){
+name = specialList[parseInt(Math.random() * specialList.length)];
+}
+
 //pick project partner, supervisor
 partnerRand = parseInt(Math.random() * partnerList.length);
 supervisorRand = parseInt(Math.random() * partnerList.length);
+
+//Chooses colours 
+var colourList = ["#fbeb11", "#f9a9a9", "#06f70f", "#ffa00d", "#ff1ee2", "#ff00de", "#00fff5", "#030084", "#ffca00"];
+
 
 //Sets project name
 //If the result exists, find its parent and delete the existing result
@@ -82,6 +93,10 @@ document.getElementById("placeholder").removeChild(document.getElementById("resu
 }
 element = document.createElement("div");
 element.setAttribute("id","result");
+var randColour = parseInt(Math.random()*colourList.length)
+element.setAttribute("style","color:"+colourList[randColour]);
+colourList.splice(randColour,1);
+
 element.appendChild(document.createTextNode(name));
 document.getElementById("placeholder").appendChild(element);
 //placeholder -> result -> name
@@ -93,16 +108,22 @@ document.getElementById("placeholder2").removeChild(document.getElementById("res
 }
 element2 = document.createElement("div");
 element2.setAttribute("id","result2");
+randColour = parseInt(Math.random()*colourList.length)
+element2.setAttribute("style","color:"+colourList[randColour]);
+colourList.splice(randColour,1);
+
 element2.appendChild(document.createTextNode(partnerList[partnerRand]));
 document.getElementById("placeholder2").appendChild(element2);
 //sets partner
 if(document.getElementById("result3")){
 document.getElementById("placeholder3").removeChild(document.getElementById("result3"));
 }
-element2 = document.createElement("div");
-element2.setAttribute("id","result3");
-element2.appendChild(document.createTextNode(partnerList[supervisorRand]));
-document.getElementById("placeholder3").appendChild(element2);
+element3 = document.createElement("div");
+element3.setAttribute("id","result3");
+randColour = parseInt(Math.random()*colourList.length)
+element3.setAttribute("style","color:"+colourList[randColour]);
+element3.appendChild(document.createTextNode(partnerList[supervisorRand]));
+document.getElementById("placeholder3").appendChild(element3);
 
 }
 
@@ -114,49 +135,61 @@ text-transform: uppercase;
 line-height:19px;
 color:#383737;
 background-color:#288dbf;
-font-family:"Comic Sans MS", cursive, sans-serif;
+font-family:"Comic Sans MS", "Comic Sans", cursive;
 font-size: 11px; 
 margin:0px;
 }
 #content {
-    position: center;
     border:0px;
     margin:0 auto;
     padding: 60px 20px 0px;
-    width: 700px;
+    max-width: 1000px;
 	color:#ffffff;
 	font-size: 20pt;
     }
 	
 #title{
     font-size: 30pt;
-    line-height:60pt;
+    line-height:35pt;
     }
 
 #text{
     font-size: 10pt;
-    line-height:30pt;
+    line-height:15pt;
 
     }
 	
 #result{
 	margin-top: 50px;
 	line-height: 200%;
+	color: #fbeb11;
 }
 #result2{
 	margin-top: 10px;
 	line-height: 200%;
+	color: #f9a9a9;
 }
 #result3{
 	margin-top: 10px;
 	line-height: 200%;
+//	color: #06f70f;
+}
+
+#placeholder{
+	width:100%; 
+	margin:0 auto;
+}
+
+#placeholder2, #placeholder3{
+	width:100%; 
+	margin:10 auto;
 }
 	
 #generator{
-    width:650px;
+    max-width:650px;
     font-weight: 300;
     border:0px solid #cccccc;
-    margin-top: 100px;
+    margin: 100px auto 0 auto;
     text-align:center;
     }
 	
@@ -171,7 +204,7 @@ button{
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
-  margin-top: 100px;
+  margin-top: 25px;
   border: 3px solid #FFF8E7;
 }
 button:hover{
@@ -207,27 +240,28 @@ button:hover:before,button:hover:after{
 <div id="content">
 
 <div id="title">Choose your mechanical part IV Project</div>
-
+	<button onclick="generator()">Make a new Part IV Project</button>
+	
 	<div id="generator">
 		
-		<div style='width:100%; margin:0 auto'; id="placeholder">
+		<div id="placeholder">
 			<div id="result">Industry 4.0</div>
 		</div>
 		
 		<div id="text">With</div>   
-          	<div style='width:100%; margin:10px auto'; id="placeholder2">
+          	<div id="placeholder2">
               	<div id="result2">your daddy</div>
           	</div>
             
         <div id="text">as group partner, and</div>
           
-          <div style='width:100%; margin:10px auto'; id="placeholder3">
+          <div id="placeholder3">
               <div id="result3">Jaspreet</div>
           </div>
           
         <div id="text">as your supervisor</div>
 		
-		<button onclick="generator()">Make a new Part IV Project</button>
+
 	</div>
 
 </div>
